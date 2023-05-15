@@ -3,9 +3,9 @@
 function renderLicenseBadge(license) {
   switch (license) {
     case 'Apache 2.0':
-      return '![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';    
+      return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)';    
     case 'Mozilla':
-      return '![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)';
+      return '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://www.mozilla.org/en-US/MPL/2.0/)';
     case 'MIT':
       return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
     case 'GNU GPLv3':
@@ -21,7 +21,20 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return 'https://github.com/obelisk477/Professional--README-Generator/blob/main/'
+  switch (license) {
+    case 'Apache 2.0':
+      return 'https://www.apache.org/licenses/LICENSE-2.0.txt';    
+    case 'Mozilla':
+      return 'https://www.mozilla.org/en-US/MPL/2.0/';
+    case 'MIT':
+      return 'https://opensource.org/licenses/MIT';
+    case 'GNU GPLv3':
+      return  'https://www.gnu.org/licenses/gpl-3.0';
+    case 'BSD 3-Clause':
+      return  'https://opensource.org/licenses/BSD-3-Clause';
+    default:
+      return ''
+  }
 }
 
 // TODO: Create a function that returns the license section of README
@@ -36,7 +49,7 @@ function renderLicenseSection(license) {
 
   return `
   ## License
-  Please refer to the ${license} license found in the repo.
+  Please refer to the [${license}](${licenseLink}) license found in the repo.
   `
 }
 
