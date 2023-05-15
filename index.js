@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
-const fs = require('fs')
+const fs = require('fs');
+const { resolve } = require('path');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -51,7 +52,14 @@ function init() {
             type: 'list',
             message: questions[4],
             name: 'license',
-            choices: ['Apache 2.0', 'BSD 3-Clause', 'GNU GPLv3', 'MIT', 'Mozilla']
+            choices: ['Apache 2.0', 'BSD 3-Clause', 'GNU GPLv3', 'MIT', 'Mozilla', 'No license'],
+            filter: (answers) => {
+                if (answers === 'No license') {
+                    return ''
+                } else {
+                    return answers
+                }
+            }
         },
         {
             type: 'input',

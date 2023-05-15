@@ -1,36 +1,64 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  
+  switch (license) {
+    case 'Apache 2.0':
+      return '![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';    
+    case 'Mozilla':
+      return '![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)';
+    case 'MIT':
+      return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+    case 'GNU GPLv3':
+      return  '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
+    case 'BSD 3-Clause':
+      return  '[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)';
+    default:
+      return ''
+  }
+   
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  return 'https://github.com/obelisk477/Professional--README-Generator/blob/main/'
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+
+  if (license === '') {
+    return ''
+  }
+
+  let licenseLink = renderLicenseLink(license)
+
+  return `
+  ## License
+  Please refer to the ${license} license found in the repo.
+  `
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+
+  let licenseText = renderLicenseSection(data.license)
+  let licenseBadge = renderLicenseBadge(data.license)
+
+  return `# ${data.title} - ${licenseBadge}
 
   ## Description
   ${data.description}
 
   ## Table of Contents
   
-
   ## Installation
   ${data.installation}
 
   ## Usage
   ${data.usage}
-
-  ## License
-  Please refer to the ${data.license} found in the repo.
-
+  ${licenseText}
   ## Contributions
   ${data.contributing}
 
@@ -40,8 +68,7 @@ function generateMarkdown(data) {
   ## Questions
   ${data.username}
   ${data.email}
-
-`;
+  `
 }
 
 module.exports = generateMarkdown;
