@@ -64,7 +64,7 @@ function generateMarkdown(data) {
     licenseTOC = ''
   } else {
     licenseTOC = `
-  * [License](#License)`
+  * [License](#license)`
   }
 
   return `# ${data.title} - ${licenseBadge}
@@ -73,11 +73,11 @@ function generateMarkdown(data) {
   ${data.description}
 
   ## Table of Contents
-  * [Installation](#Installation)
-  * [Usage](#Usage)${licenseTOC}
-  * [Contributions](#Contributions)
-  * [Tests](#Tests)
-  * [Questions](#Questions)
+  * [Installation](#installation)
+  * [Usage](#usage)${licenseTOC}
+  * [Contributions](#contributions)
+  * [Tests](#tests)
+  * [Questions](#questions)
   
   ## Installation
   ${data.installation}
@@ -92,8 +92,9 @@ function generateMarkdown(data) {
   ${data.tests}
 
   ## Questions
-  ${data.username}
-  ${data.email}
+  GitHub Profile: [${data.username}](https://github.com/obelisk477)
+  
+  For additional questions or feedback, you can email me at [${data.email}](mailto:${data.email})
   `
 }
 

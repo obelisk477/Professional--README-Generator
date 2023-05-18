@@ -84,7 +84,7 @@ function init() {
     ])
     .then((answers) => {
         let dynamicMarkdown = generateMarkdown(answers)
-        writeToFile('dynamicREADME.md',dynamicMarkdown)
+        writeToFile('generatedREADME.md',dynamicMarkdown)
 
     })
 }
