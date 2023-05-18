@@ -58,6 +58,14 @@ function generateMarkdown(data) {
 
   let licenseText = renderLicenseSection(data.license)
   let licenseBadge = renderLicenseBadge(data.license)
+  let licenseTOC
+
+  if (licenseText == '') {
+    licenseTOC = ''
+  } else {
+    licenseTOC = `
+  * [License](#License)`
+  }
 
   return `# ${data.title} - ${licenseBadge}
 
@@ -65,6 +73,11 @@ function generateMarkdown(data) {
   ${data.description}
 
   ## Table of Contents
+  * [Installation](#Installation)
+  * [Usage](#Usage)${licenseTOC}
+  * [Contributions](#Contributions)
+  * [Tests](#Tests)
+  * [Questions](#Questions)
   
   ## Installation
   ${data.installation}
